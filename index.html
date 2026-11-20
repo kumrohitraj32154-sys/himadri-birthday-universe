@@ -4590,4 +4590,16 @@
   };
 </script>
 </body>
+  <script>
+  window.addEventListener('DOMContentLoaded', () => {
+    const observer = new MutationObserver(() => {
+      document.querySelectorAll('iframe, a, div').forEach(el => {
+        if (el.innerHTML && el.innerHTML.includes('Netlify') || (el.href && el.href.includes('netlify.com'))) {
+          el.remove();
+        }
+      });
+    });
+    observer.observe(document.body, { childList: true, subtree: true });
+  });
+</script>  
 </html>
